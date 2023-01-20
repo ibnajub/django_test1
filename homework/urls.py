@@ -15,14 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from myapp.views import main, main_regexp, another, main_article, uniq_article, article
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('acricles/', admin.site.urls),
-    path('acrticles/archive', admin.site.urls),
-    path('users/', admin.site.urls),
+    # path('admin/', admin.site.urls),
+    path('', main),
+    path('article/', main_article),
+    path('article/archive/', uniq_article),
+    path('users/', another),
 
     # http://127.0.0.1:8000/article/<int:article_number>,
+    path('article/<int:article_id>/', article, name='article'),
 
     # http://127.0.0.1:8000/article/<int:article_number>/archive,
 
