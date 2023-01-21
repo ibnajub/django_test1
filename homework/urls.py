@@ -15,8 +15,8 @@ Including another URLconf
 """
 # from django.contrib import admin
 # from django.urls import path
-from django.urls import path, include
-from myapp.views import main, main_regexp, another, main_article, uniq_article, article, article_slug, user_id
+from django.urls import path, include, re_path
+from myapp.views import main, main_article, uniq_article, article, article_slug,  regex_1
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -35,11 +35,11 @@ urlpatterns = [
     # http://127.0.0.1:8000/article/<int:article_number>/<slug:slug_text>,
     path('article/<int:article_id>/<slug:slug_text>/', article_slug, name='article'),
 
-
-
+    # https://www.exlab.net/tools/sheets/regexp.html
 
     # Создать урл который будет принимать параметр вида 4 символа от 1 до 9, или от a до f, знак дефиса и еще 6 символов
     # , например /34f1-1ac498/
+    re_path('^[0-9a-f]{4}\-[0-9a-f]{6}$', regex_1),
 
     # Создать урл который будет принимать в качестве параметра корректный номер украинского мобильного телефона,
     # 0501231211 - корректно, 0751231212 - нет
