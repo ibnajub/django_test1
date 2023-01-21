@@ -1,5 +1,5 @@
-from django.urls import path, include
-from .views import another,  user_id
+from django.urls import path
+from .views import another, user_id
 
 urlpatterns = [
 
