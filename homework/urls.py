@@ -13,25 +13,30 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
-from myapp.views import main, main_regexp, another, main_article, uniq_article, article
+# from django.contrib import admin
+# from django.urls import path
+from django.urls import path, include
+from myapp.views import main, main_regexp, another, main_article, uniq_article, article, article_slug, user_id
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('', main),
     path('article/', main_article),
     path('article/archive/', uniq_article),
-    path('users/', another),
+
+    path('users/', include('myapp.urls')),
 
     # http://127.0.0.1:8000/article/<int:article_number>,
     path('article/<int:article_id>/', article, name='article'),
 
     # http://127.0.0.1:8000/article/<int:article_number>/archive,
+    path('article/<int:article_id>/archive/', article, name='article'),
 
     # http://127.0.0.1:8000/article/<int:article_number>/<slug:slug_text>,
+    path('article/<int:article_id>/<slug:slug_text>/', article_slug, name='article'),
 
-    # http://127.0.0.1:8000/users/<int:user_number>
+
+
 
     # Создать урл который будет принимать параметр вида 4 символа от 1 до 9, или от a до f, знак дефиса и еще 6 символов
     # , например /34f1-1ac498/

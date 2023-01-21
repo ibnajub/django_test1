@@ -22,6 +22,14 @@ def uniq_article(request):
 
 def article(request, article_id):
     return HttpResponse(f"This is an article #{article_id}.")
+def article_slug(request, article_id, slug_text):
+    return HttpResponse(f"This is an article #{article_id}. slug #{slug_text}")
+
+
+def user_id(request, user_number):
+    return HttpResponse(f"This is an user #{user_number}.")
+
+
 def main_regexp(request):
     return HttpResponse("regexp")
 
