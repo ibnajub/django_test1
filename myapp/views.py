@@ -32,7 +32,7 @@ def user_id(request, user_number):
 
 
 def regex_1(request):
-    return HttpResponse(f"it's regexp ")
+    return HttpResponse(f"it's regexp")
 def regex(request, text):
     return HttpResponse(f"it's regexp with text: {text}")
 
