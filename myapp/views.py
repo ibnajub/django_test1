@@ -23,11 +23,17 @@ def uniq_article(request):
 
 
 def article(request, article_id):
-    return HttpResponse(f"This is an article #{article_id}.")
-
+    # return HttpResponse(f"This is an article #{article_id}.")
+    return render(request, 'index.html', {
+        'article_id':article_id,
+    })
 
 def article_slug(request, article_id, slug_text):
-    return HttpResponse(f"This is an article #{article_id}. slug #{slug_text}")
+    # return HttpResponse(f"This is an article #{article_id}. slug #{slug_text}")
+    return render(request, 'index.html', {
+        'article_id': article_id,
+        'slug_text':slug_text,
+    })
 
 
 def user_id(request, user_number):

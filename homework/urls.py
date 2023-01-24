@@ -31,14 +31,14 @@ urlpatterns = [
     # # http://127.0.0.1:8000/users/<int:user_number>
     # path('<int:user_number>/', user_id, name='users'),
     #
-    # # http://127.0.0.1:8000/article/<int:article_number>,
-    # path('article/<int:article_id>/', article, name='article'),
+     http://127.0.0.1:8000/article/<int:article_number>,
+     path('article/<int:article_id>/', article, name='article_id'),
     #
     # # http://127.0.0.1:8000/article/<int:article_number>/archive,
     # path('article/<int:article_id>/archive/', article, name='article_id'),
     #
-    # # http://127.0.0.1:8000/article/<int:article_number>/<slug:slug_text>,
-    # path('article/<int:article_id>/<slug:slug_text>/', article_slug, name='article_slug'),
+    # http://127.0.0.1:8000/article/<int:article_number>/<slug:slug_text>,
+    path('article/<int:article_id>/<slug:slug_text>/', article_slug, name='article_slug'),
     #
     # # https://www.exlab.net/tools/sheets/regexp.html
     #
