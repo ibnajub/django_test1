@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 # mysite/myapp/views.py
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 # Поздравляю, это ваш первый контроллер, который может, принять запрос, и отдать ответ с текстом, больше ничего
@@ -39,3 +40,7 @@ def regex_1(request):
 
 def regex(request, text):
     return HttpResponse(f"it's regexp with text: {text}")
+
+#-----------------------------------
+def index(request):
+    return render(request, 'index.html')
