@@ -31,7 +31,7 @@ urlpatterns = [
     # # http://127.0.0.1:8000/users/<int:user_number>
     # path('<int:user_number>/', user_id, name='users'),
     #
-     http://127.0.0.1:8000/article/<int:article_number>,
+    # http://127.0.0.1:8000/article/<int:article_number>,
      path('article/<int:article_id>/', article, name='article_id'),
     #
     # # http://127.0.0.1:8000/article/<int:article_number>/archive,
