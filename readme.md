@@ -1,6 +1,10 @@
 
 
 
+
+pip freeze > requirements.txt  
+pip install -r requirements.txt
+
 VSCode Django https://code.visualstudio.com/docs/python/tutorial-django
 
 Урок 1
