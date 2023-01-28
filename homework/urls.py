@@ -20,7 +20,7 @@ from myapp.views import main, main_article, uniq_article, article, article_slug,
 
 urlpatterns = [
 
-    path('', index),
+    path('', index, name='index'),
 
     # # path('admin/', admin.site.urls),
     # path('', main),
@@ -32,7 +32,7 @@ urlpatterns = [
     # path('<int:user_number>/', user_id, name='users'),
     #
     # http://127.0.0.1:8000/article/<int:article_number>,
-     path('article/<int:article_id>/', article, name='article_id'),
+    path('article/<int:article_id>/', article, name='first'),
     #
     # # http://127.0.0.1:8000/article/<int:article_number>/archive,
     # path('article/<int:article_id>/archive/', article, name='article_id'),
