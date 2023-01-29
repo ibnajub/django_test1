@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myapp',
 ]
 
 MIDDLEWARE = [
@@ -72,14 +73,15 @@ WSGI_APPLICATION = 'homework.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mydb',
-        'USER': 'myuser',
-        'PASSWORD': 'mypass',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+
+        # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': 'django_myapp1',
+        # 'USER': 'myuser',
+        # 'PASSWORD': 'mypass',
+        # 'HOST': 'localhost',
+        # 'PORT': '5432',
     }
 }
 
