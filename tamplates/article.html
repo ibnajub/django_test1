@@ -3,7 +3,7 @@
 {% block content %}
 
     <div>
-        {% if display_num % %}
+        {% if article_id|divisibleby:"2" %}
             <h3>Number is: </h3>
             <span>even</span>
         {% else %}
@@ -11,5 +11,5 @@
             <span>odd</span>
         {% endif %}
     </div>
-
+ {% include 'incl_slug.html' %}
 {% endblock %}
