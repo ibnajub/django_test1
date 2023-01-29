@@ -79,6 +79,3 @@ def index(request):
         'my_class': my_class,
         'display_num': False
     })
-
-def first(request):
-    return render(request, 'articles.html')

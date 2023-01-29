@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        {% if display_num %}
+            <h3>Number is: </h3>
+            <span>even</span>
+        {% else %}
+            <h3>Number is: </h3>
+            <span>odd</span>
+        {% endif %}
+    </div>
+
+{% endblock %}
