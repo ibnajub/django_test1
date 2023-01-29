@@ -15,7 +15,9 @@ def another(request):
 
 
 def main_article(request):
-    return HttpResponse('There will be a list with articles')
+    return render(request, 'articles.html', {
+
+    })
 
 
 def uniq_article(request):
@@ -24,7 +26,7 @@ def uniq_article(request):
 
 def article(request, article_id):
     # return HttpResponse(f"This is an article #{article_id}.")
-    return render(request, 'index.html', {
+    return render(request, 'articles.html', {
         'article_id': article_id,
     })
 
@@ -77,3 +79,6 @@ def index(request):
         'my_class': my_class,
         'display_num': False
     })
+
+def first(request):
+    return render(request, 'articles.html')

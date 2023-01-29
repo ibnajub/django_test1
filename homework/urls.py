@@ -24,7 +24,7 @@ urlpatterns = [
 
     # # path('admin/', admin.site.urls),
     # path('', main),
-    # path('article/', main_article),
+    path('articles/', main_article, name='articles'),
     # path('article/archive/', uniq_article),
     #
     # path('users/', include('myapp.urls')),
@@ -32,7 +32,7 @@ urlpatterns = [
     # path('<int:user_number>/', user_id, name='users'),
     #
     # http://127.0.0.1:8000/article/<int:article_number>,
-    path('article/<int:article_id>/', article, name='first'),
+    path('article/<int:article_id>/', article, ),
     #
     # # http://127.0.0.1:8000/article/<int:article_number>/archive,
     # path('article/<int:article_id>/archive/', article, name='article_id'),
