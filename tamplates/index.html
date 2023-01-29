@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div style="padding: 20px; background-color: fuchsia"> Extended template index!</div>
-<a href="{% url 'articles' %}">To the first page</a>
+    <div style="padding: 20px; background-color: fuchsia"> Extended template index!</div>
+    <a href="{% url 'articles' %}">To the first page</a>
+
+    <br>
+    <br>
+    <a style="background-color: coral" href="{% url 'article_id' rand_list_article|random %} ">random INT article</a>
+    <br>
+    <br>
+    <a style="background-color: chocolate"
+       href="{% url 'article_slug' rand_list_article|random rand_article_slag %} ">random INT SLUG article</a>
 
 {% endblock %}
 

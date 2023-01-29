@@ -32,7 +32,7 @@ urlpatterns = [
     # path('<int:user_number>/', user_id, name='users'),
     #
     # http://127.0.0.1:8000/article/<int:article_number>,
-    path('article/<int:article_id>/', article, ),
+    path('article/<int:article_id>/', article, name= 'article_id'),
     #
     # # http://127.0.0.1:8000/article/<int:article_number>/archive,
     # path('article/<int:article_id>/archive/', article, name='article_id'),
