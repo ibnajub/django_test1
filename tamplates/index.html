@@ -6,14 +6,23 @@
 
     <br>
     <br>
-    <a style="background-color: coral" href="{% url 'article_id' rand_list_article|random %} ">random INT article</a>
+{#    <a style="background-color: coral" href="{% url 'article_id' rand_list_article|random %} ">random INT article</a>#}
+{#    <br>#}
+{#    <br>#}
+{#    <a style="background-color: chocolate"#}
+{#       href="{% url 'article_slug' rand_list_article|random rand_article_slag %} ">random INT SLUG article</a>#}
+
+
+    {% load my_filter_extras %}
+    <a style="background-color: coral"
+       href="{% url 'article_id' rand_id|my_random_filter_id_slag %} ">random INT article</a>
+
+    <br>
+    <br>
     <br>
     <br>
     <a style="background-color: chocolate"
-       href="{% url 'article_slug' rand_list_article|random rand_article_slag %} ">random INT SLUG article</a>
-    {% load poll_extras %}
-    <a style="background-color: chocolate"
-       href="{% url 'article_slug' rand_list_article|random rand_article_slag %} ">random INT SLUG article</a>
+       href="{% url 'article_slug' rand_id|my_random_filter_id_slag rand_slag|my_random_filter_id_slag %} ">random INT article</a>
 {% endblock %}
 
 {#<!DOCTYPE html>#}

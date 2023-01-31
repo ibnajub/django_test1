@@ -69,13 +69,17 @@ def index(request):
     # my_set = {'set_first_item', 'set_second_item', 'set_third_item'}
     # my_tuple = ('tuple_first_item', 'tuple_second_item', 'tuple_third_item')
     # my_class = MyClass('class string')
-    rand_list_article = [1, 2, 3, 4, 5]
-    # rand_list_article = 2
-    letters = string.ascii_letters
-    rand_article_slag = ''.join(random.choice(letters) for i in range(5)) + '-' \
-                        + ''.join(random.choice(letters) for i in range(5))
+    # rand_list_article = [1, 2, 3, 4, 5]
+    rand_id = 'id'
+    rand_slag = 'slag'
+    # # rand_list_article = 2
+    # letters = string.ascii_letters
+    # rand_article_slag = ''.join(random.choice(letters) for i in range(5)) + '-' \
+    #                     + ''.join(random.choice(letters) for i in range(5))
     return render(request, 'index.html', {
-        'rand_list_article': rand_list_article,
-        'rand_article_slag': rand_article_slag,
+        # 'rand_list_article': rand_list_article,
+        # 'rand_article_slag': rand_article_slag,
+        'rand_id': rand_id,
+        'rand_slag': rand_slag,
 
     })
