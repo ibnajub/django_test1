@@ -11,7 +11,9 @@
     <br>
     <a style="background-color: chocolate"
        href="{% url 'article_slug' rand_list_article|random rand_article_slag %} ">random INT SLUG article</a>
-
+    {% load poll_extras %}
+    <a style="background-color: chocolate"
+       href="{% url 'article_slug' rand_list_article|random rand_article_slag %} ">random INT SLUG article</a>
 {% endblock %}
 
 {#<!DOCTYPE html>#}
