@@ -2,16 +2,17 @@ from django.contrib import admin
 # from .models import Article
 import models
 
-admin.site.register(models.Author1)
-admin.site.register(models.Book1)
+admin.site.register(models.Catalog_author)
+admin.site.register(models.Catalog_book)
 
-admin.site.register(models.Author2)
-admin.site.register(models.Book2)
-admin.site.register(models.User_reader)
-admin.site.register(models.User_reader_history)
-admin.site.register(models.allowed_books)
+admin.site.register(models.Library_author)
+admin.site.register(models.Library_book)
+admin.site.register(models.Library_book_Library_author)
+admin.site.register(models.Library_User_reader)
+admin.site.register(models.Library_user_reader_history)
+admin.site.register(models.Library_allowed_book)
 
-admin.site.register(models.User)
-admin.site.register(models.Article)
-admin.site.register(models.Likes)
-admin.site.register(models.Comment)
+admin.site.register(models.Artc_user)
+admin.site.register(models.Artc_article)
+admin.site.register(models.Artc_likes)
+admin.site.register(models.Artc_comment)
