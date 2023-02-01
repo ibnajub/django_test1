@@ -3,3 +3,4 @@
 */__pycache__/*
 /.vscode/*
 myapp/migrations/__pycache__/*
+myapp/templatetags/__pycache__/*
