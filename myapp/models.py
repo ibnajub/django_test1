@@ -54,46 +54,51 @@ class LibraryAllowedBook(models.Model):
         return self.book.name
 
 
-# # 3 Разработать набор моделей, для сайта-блога, на котором можно выставлять свои статьи, комментировать чужие, ставить
-# # лайк и дизлайк статье, и комментарию.
-# # 3.1 Доделать так, что бы связи позволяли комментировать комментарии.
-# # 3.2* Сделать лайки через GenericForeignKey
+# 3 Разработать набор моделей, для сайта-блога, на котором можно выставлять свои статьи, комментировать чужие, ставить
+# лайк и дизлайк статье, и комментарию.
+# 3.1 Доделать так, что бы связи позволяли комментировать комментарии.
+# 3.2* Сделать лайки через GenericForeignKey
+
+# class ArtcUser(models.Model):
+#     name = models.CharField(max_length=100, blank=False)
 #
-class ArtcUser(models.Model):
-    name = models.CharField(max_length=100, blank=False)
-
-    def __str__(self):
-        return self.name
-
-
-class ArtcArticle(models.Model):
-    date = models.DateField(auto_now=True)
-    date_update = models.DateTimeField(auto_now_add=True)
-    header = models.CharField(max_length=100)
-    author = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
-    text = models.TextField(null=True, blank=True)
-
-    def __str__(self):
-        return self.header
-
-
-class ArtcLikes(models.Model):
-    article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
-    user = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now_add=True)
-    like_dislike = models.BooleanField()
-
-    def __str__(self):
-        return self.article.header
-
-
-class ArtcComment(models.Model):
-    parrent = models.ForeignKey('myapp.ArtcComment', null=True, blank=False, on_delete=models.DO_NOTHING)
-    article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
-    user = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
-    date = models.DateTimeField(auto_now=True)
-    date_update = models.DateTimeField(auto_now_add=True)
-    comment_text = models.CharField(max_length=1000)
-
-    def __str__(self):
-        return self.user.name
+#     def __str__(self):
+#         return self.name
+#
+#
+# class ArtcArticle(models.Model):
+#     date = models.DateField(auto_now=True)
+#     date_update = models.DateTimeField(auto_now_add=True)
+#     header = models.CharField(max_length=100)
+#     author = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
+#     text = models.TextField(null=True, blank=True)
+#
+#     def __str__(self):
+#         return self.header
+#
+#
+# class ArtcLikes(models.Model):
+#     article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
+#     user = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
+#     date = models.DateTimeField(auto_now_add=True)
+#     like_dislike = models.BooleanField()
+#
+#     # class Meta:
+#     #     unique_together = ['article', 'user']
+#
+#     def __str__(self):
+#         return self.article.header
+#
+#
+# class ArtcComment(models.Model):
+#     # parrent = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)#models.ForeignKey('myapp.ArtcComment', null=True, blank=False, on_delete=models.DO_NOTHING)
+#     article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
+#     user = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
+#     date = models.DateTimeField(auto_now=True)
+#     date_update = models.DateTimeField(auto_now_add=True)
+#     comment_text = models.CharField(max_length=1000)
+#
+#     # GenericForeignKey
+#
+#     def __str__(self):
+#         return self.user.name
