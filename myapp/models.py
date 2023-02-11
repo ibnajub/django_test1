@@ -91,7 +91,9 @@ class ArtcLikes(models.Model):
 
 
 class ArtcComment(models.Model):
-    # parrent = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)#models.ForeignKey('myapp.ArtcComment', null=True, blank=False, on_delete=models.DO_NOTHING)
+    parrent = models.ForeignKey('myapp.ArtcComment', null=True, blank=False, on_delete=models.DO_NOTHING,
+                                related_name='parrents')
+    parrent_level = models.IntegerField(default=0)
     article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
     user = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now=True)

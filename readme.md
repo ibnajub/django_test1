@@ -5,6 +5,7 @@
 pip freeze > requirements.txt  
 pip install -r requirements.txt
 
+GIT --- https://learngitbranching.js.org/?locale=ru_RU 
 VSCode Django https://code.visualstudio.com/docs/python/tutorial-django
 
 Урок 1
@@ -14,7 +15,7 @@ https://regex101.com/
 ./pic/regexp.png
 
 https://bool.dev/blog/detail/vizualizatsiya-poleznykh-git-komand
-https://learngitbranching.js.org/?locale=ru_RU
+
 
 Урок 2 Tamplates 
 https://github.com/PonomaryovVladyslav/PythonCources/blob/master/lesson29.md
