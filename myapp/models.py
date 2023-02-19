@@ -1,5 +1,8 @@
 from django.db import models
 
+from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+
 
 # Create your models here.
 # 1Разрабатываем каталог книг, у каждой книги обязательно есть автор, и он может быть только один.
@@ -69,7 +72,7 @@ class ArtcUser(models.Model):
 class ArtcArticle(models.Model):
     date = models.DateField(auto_now=True)
     date_update = models.DateTimeField(auto_now_add=True)
-    header = models.CharField(max_length=100)
+    header = models.CharField(max_length=1000)
     author = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
     text = models.TextField(null=True, blank=True)
 
@@ -78,20 +81,24 @@ class ArtcArticle(models.Model):
 
 
 class ArtcLikes(models.Model):
-    article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
     user = models.ForeignKey(ArtcUser, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     like_dislike = models.BooleanField()
 
-    class Meta:
-        unique_together = ['article', 'user']
+    content_type = models.ForeignKey(ContentType,on_delete=models.CASCADE)
+    object_id = models.PositiveIntegerField()
+    content_object = GenericForeignKey('content_type', 'object_id')
 
-    def __str__(self):
-        return self.article.header
+    # article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
+    # class Meta:
+    #     unique_together = ['article', 'user']
+
+    # def __str__(self):
+    #     return object_id
 
 
 class ArtcComment(models.Model):
-    parrent = models.ForeignKey('myapp.ArtcComment', null=True, blank=False, on_delete=models.DO_NOTHING,
+    parrent = models.ForeignKey('myapp.ArtcComment', null=True, blank=True, on_delete=models.DO_NOTHING,
                                 related_name='parrents')
     parrent_level = models.IntegerField(default=0)
     article = models.ForeignKey(ArtcArticle, on_delete=models.CASCADE)
