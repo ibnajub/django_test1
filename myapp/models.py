@@ -13,9 +13,9 @@ from django.utils.translation import gettext as _
 # )
 
 #
-class Author(models.Model):
-    pseudonym = models.CharField(max_length=120, blank=True, null=True)
-    name = models.CharField(max_length=120)
+# class Author(models.Model):
+#     pseudonym = models.CharField(max_length=120, blank=True, null=True)
+#     name = models.CharField(max_length=120)
 #
 #     def __str__(self):
 #         return self.name
