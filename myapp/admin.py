@@ -1,8 +1,10 @@
 from django.contrib import admin
 # from .models import Article
 # from myapp import models
-from .models import CatalogAuthor,CatalogBook,LibraryAuthor,LibraryBook,LibraryUserReader,LibraryUserReaderHistory,\
-    LibraryAllowedBook, ArtcUser, ArtcArticle, ArtcLikes, ArtcComment
+from .models import CatalogAuthor, CatalogBook, LibraryAuthor, LibraryBook, LibraryUserReader, LibraryUserReaderHistory\
+    ,LibraryAllowedBook, ArtcArticle, ArtcLikes, ArtcComment, ArtcUser
+
+
 
 admin.site.register(CatalogAuthor)
 admin.site.register(CatalogBook)
