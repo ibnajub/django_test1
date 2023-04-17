@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+</head>
+<body>
+{% if not user.is_authenticated %}
+    <a href="{% url 'login' %}">Enter</a>
+    <a href="{% url 'signup' %}">Registration</a>
+
+{% else %}
+    <a href="{% url 'list' %}">Ouer Photos</a>
+
+{% endif %}
+<p></p>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Найти</button>
+</form>
+
+<p></p>
+
+{% if user.is_authenticated %}
+    <form action="{% url 'download' %}" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Найти</button>
+    </form>
+{% endif %}
+<p></p>
+
+{% if images %}
+    <h4>Find images</h4>
+    {% for img in images %}
+        <img src="{{ img }} " alt="" style="width: 200px;">
+
+    {% endfor %}
+
+{% endif %}
+</body>
+</html>
