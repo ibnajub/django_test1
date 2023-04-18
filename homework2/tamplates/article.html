@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div>
+        {% if article_id|divisibleby:"2" %}
+            <h3>Number is: </h3>
+            <span>even</span>
+        {% else %}
+            <h3>Number is: </h3>
+            <span>odd</span>
+        {% endif %}
+    </div>
+ {% include 'incl_slug.html' with name='slug_text'  %}
+{% endblock %}
