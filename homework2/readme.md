@@ -4,6 +4,18 @@ python manage.py createsuperuser
 
 VSCode Django https://code.visualstudio.com/docs/python/tutorial-django
 
+Вопросы для собесов:
+Паттерн
+ООП
+ACID SOLID Нормализация БД
+SOLID https://medium.com/webbdev/solid-4ffc018077da
+https://habr.com/ru/companies/productivity_inside/articles/505430/
+МэжикМетоды
+СинглТон
+ЧериПик
+Каталог паттернов проектирования
+https://refactoring.guru/ru/design-patterns/catalog
+
 Урок 1
 https://github.com/PonomaryovVladyslav/PythonCources/blob/master/lesson28.md
 https://www.exlab.net/tools/sheets/regexp.html
@@ -34,4 +46,7 @@ https://docs.djangoproject.com/en/2.2/ref/templates/builtins/
 https://www.educative.io/answers/how-to-generate-a-random-string-in-python
 
 How to manage static files (e.g. images, JavaScript, CSS)¶
-https://docs.djangoproject.com/en/4.1/howto/static-files/ 
+https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+Урок 3 ОРМ
+

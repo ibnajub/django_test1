@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <form method="post" action="{% url 'topic' topic_id %}">
+        {#    {% csrf_token %}#}
+        <br>
+        {{ form.as_ul }}
+        <p><br></p>
+
+        <button type="submit">Save topic</button>
+    </form>
+
+{% endblock %}

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 class Topic(models.Model):
-    author = models.ManyToManyField(User, )
+    author = models.ManyToManyField(User, related_name='author')
     
     title = models.CharField(max_length=200, blank=False, null=True)
     description = models.TextField(max_length=10000, null=True)
@@ -17,8 +17,8 @@ class Topic(models.Model):
 
 
 class Blogpost(models.Model):
-    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, )
-    topic = models.ManyToManyField(Topic, )
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, related_name='blog_author')
+    topic = models.ManyToManyField(Topic, related_name='topic')
     
     slug = models.SlugField(max_length=50, null=True)
     title = models.CharField(max_length=200, blank=False, null=True)
@@ -32,8 +32,8 @@ class Blogpost(models.Model):
 
 
 class Comment(models.Model):
-    blogpost = models.ForeignKey(Blogpost, on_delete=models.CASCADE, null=False, )
-    author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    blogpost = models.ForeignKey(Blogpost, on_delete=models.CASCADE, null=False, related_name='blog')
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='comment_author')
     
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=10000, null=True)

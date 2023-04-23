@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 # from django.urls import path
 from django.urls import path, include, re_path
-from myapp.views import main, uniq_article, article, article_slug, regex, index, main_article
+from myapp.views import uniq_article, article, article_slug, regex, index, main_article, blogs, topics, topic, blog
 
 # from ormTest.views import hotline
 
@@ -59,14 +59,16 @@ urlpatterns = [
     # re_path(r'^(?P<text>^\A(0(39|67|68|96|97|98|50|66|95|99|63|73|93)\d{7})\Z$)', regex),
     
     # домашня сторінка сайту. Він міститиме список блогів, доступних на сайті django
-    path('blogs/', index, name='blogs'),
+    path('blogs/', blogs, name='blogs'),
+    path('topics/', topics, name='topics'),
+    path('topic/<int:topic_id>', topic, name='topic'),
     
     # надає звичайний текст для користувача, що описує функції сайту django.
     path('about/', index, name='about'),
     
     # детальний перегляд окремої публікації в блозі. URL-адреса містить динамічну частину. Це буде використано для
     # отримання однієї публікації блогу з бази даних.
-    path('<slug:slug>/', index, name='blog_slug'),
+    path('<slug:slug>/', blog, name='blog_slug'),
     
     # це подання використовуватиметься для додавання коментарів до публікації блогу.
     path('<slug:slug>/comment/', index, name='comment'),

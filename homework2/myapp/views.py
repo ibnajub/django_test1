@@ -5,10 +5,53 @@ import string
 # mysite/myapp/views.py
 from django.http import HttpResponse
 
+from myapp.forms import PostForm, BlogpostForm
+from myapp.models import Blogpost, Topic
+
+
+def blogs(request):
+    blogs = Blogpost.objects.all()
+    return render(request, 'blogs.html', {
+        'blogs': blogs,
+    })
+
+
+def blog(request, slug):
+    if request.method == 'POST':
+        pass
+    else:
+        blog = Blogpost.objects.filter(slug=slug)
+        form = BlogpostForm()
+    
+    return render(request, 'blog.html', {
+        'form': form,
+        'slug': slug,
+    })
+
+
+def topics(request):
+    topics = Topic.objects.all()
+    return render(request, 'topics.html', {
+        'topics': topics,
+    })
+
+
+def topic(request, topic_id):
+    if request.method == 'POST':
+        pass
+    else:
+        topic = Topic.objects.filter(id=topic_id)
+        form = PostForm()
+    
+    return render(request, 'topic.html', {
+        'form': form,
+        'topic_id': topic_id,
+    })
+
 
 # Поздравляю, это ваш первый контроллер, который может, принять запрос, и отдать ответ с текстом, больше ничего
-def main(request):
-    return HttpResponse("Hey! It's your main view!!")
+# def main(request):
+#     return HttpResponse("Hey! It's your main view!!")
 
 
 def another(request):
@@ -50,16 +93,6 @@ def regex_1(request):
 
 def regex(request, text):
     return HttpResponse(f"it's regexp with text: {text}")
-
-
-# -----------------------------------
-
-
-# class MyClass:
-#     string = ''
-#
-#     def __init__(self, s):
-#         self.string = s
 
 
 def index(request):
