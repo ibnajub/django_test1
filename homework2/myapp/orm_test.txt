@@ -2,12 +2,34 @@
 
 Python console
 
-    python manage.py shell
-    django_manage_shell
-    from myapp.models import *
-    Blogpost.objects.all()
-    Blogpost.objects.last()
-    Blogpost.objects.filter(title='xzx ssss')
+python manage.py shell
+django_manage_shell
+
+from django.db import connection
+connection.queries
+последний запрос
+
+from myapp.models import *
+Blogpost.objects.all()
+
+на деле в скуле будет лимит по записям
+Blogpost.objects.all()[:2]
+Blogpost.objects.order_by('-pk').all()[:2]
+
+Blogpost.objects.last()
+Blogpost.objects.filter(title='xzx ssss')
+Blogpost.objects.filter(topic__title='title1')
+
+artem = User.objects.filter(username='artem').get()
+artem2 = User.objects.filter(username='artem2').get()
 
 
+top1 = Topic.objects.create(title = 'topic3', description= 'trtrtrt stsdtst ststst')
+тут мени ту мени таблица!
+top1.author.add(artem)
+top1.save()
+
+top1 = Topic.objects.filter(title= 'title1').get()
+top3 = Topic.objects.filter(title= 'topic3').get()
+top4 = Topic.objects.filter(title= 'topic4').get()
 

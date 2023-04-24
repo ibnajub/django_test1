@@ -2,7 +2,7 @@
 {% block content %}
 
     <form method="post" action="{% url 'blog_slug' slug %}">
-        {#    {% csrf_token %}#}
+        {% csrf_token %}
         <br>
         {{ form.as_p }}
         <p><br></p>

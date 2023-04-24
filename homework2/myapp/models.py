@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 
 # from django.utils import timezone
@@ -20,15 +21,19 @@ class Blogpost(models.Model):
     author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, related_name='blog_author')
     topic = models.ManyToManyField(Topic, related_name='topic')
     
-    slug = models.SlugField(max_length=50, null=True)
+    slug = models.SlugField(max_length=50, null=True, unique=True, db_index=True)
     title = models.CharField(max_length=200, blank=False, null=True)
     content = models.TextField(max_length=10000, null=True)
     # created_at = models.DateTimeField(auto_now_add=True, default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
+    def save(self, **kwargs):
+        self.slug = slugify(self.title)
+        super.save(**kwargs)
+    
     def __str__(self):
-        return "author - {}, topic - {}, id - {}".format(self.author.username, self.topic, self.id)
+        return "Author: {}; Title: {}; Slug: {}".format(self.author.username, self.title, self.slug)
 
 
 class Comment(models.Model):

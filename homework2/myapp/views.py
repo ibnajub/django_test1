@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 import random
 import string
 
@@ -20,7 +20,7 @@ def blog(request, slug):
     if request.method == 'POST':
         pass
     else:
-        blog = Blogpost.objects.filter(slug=slug)
+        blog = get_object_or_404(Blogpost.objects.filter(slug=slug))
         form = BlogpostForm()
     
     return render(request, 'blog.html', {
@@ -40,7 +40,7 @@ def topic(request, topic_id):
     if request.method == 'POST':
         pass
     else:
-        topic = Topic.objects.filter(id=topic_id)
+        topic = get_object_or_404(Topic.objects.filter(id=topic_id))
         form = PostForm()
     
     return render(request, 'topic.html', {

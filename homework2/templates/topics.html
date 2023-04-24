@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for item in topics %}
-        <span>
+
+    <div class="container"
+         style="max-width: 1200px; margin: 0 auto; display: block; flex-wrap: wrap; justify-content: space-around">
+        {% for item in topics %}
+            <span>
         <a href="{% url 'topic' item.id %}">{{ item }}</a>
 
         </span>
 
-        <br>
-    {% endfor %}
+            <br>
+        {% endfor %}
+    </div>
 {% endblock %}
