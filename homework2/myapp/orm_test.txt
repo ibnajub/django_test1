@@ -1,18 +1,21 @@
 
 
 Python console
+https://proproprogs.ru/django/osnovy-orm-django-za-chas
 
 python manage.py shell
 django_manage_shell
+
+from myapp.models import *
 
 from django.db import connection
 connection.queries
 последний запрос
 
-from myapp.models import *
+
 Blogpost.objects.all()
 
-на деле в скуле будет лимит по записям
+срез на деле в скуле будет лимит по записям
 Blogpost.objects.all()[:2]
 Blogpost.objects.order_by('-pk').all()[:2]
 
@@ -22,10 +25,21 @@ Blogpost.objects.filter(topic__title='title1')
 
 artem = User.objects.filter(username='artem').get()
 artem2 = User.objects.filter(username='artem2').get()
+vasja = User.objects.filter(username='vasja').get()
+
+related_name blog_authors
+https://www.youtube.com/watch?v=IwepbF9aK0Y&ab_channel=Denis
+все блоги этого автора можно из блога либо из автора увидеть
+Blogpost.objects.first().author.blog_authors.all()
+User.objects.filter(username='artem').get().authors.all()
+User.objects.filter(username='artem').get().topic_set.all() -- это если нет related_name
+-------------------
 
 
 top1 = Topic.objects.create(title = 'topic3', description= 'trtrtrt stsdtst ststst')
-тут мени ту мени таблица!
+
+https://docs.djangoproject.com/en/2.2/topics/db/examples/many_to_many/
+тут ManyToManyField!
 top1.author.add(artem)
 top1.save()
 
@@ -33,3 +47,27 @@ top1 = Topic.objects.filter(title= 'title1').get()
 top3 = Topic.objects.filter(title= 'topic3').get()
 top4 = Topic.objects.filter(title= 'topic4').get()
 
+blog22 = Blogpost(author = vasja, title = 'title22', content= 'aaaaaaaaa zxxzzzzzz' )
+blog22.save()
+blog22.topic.add(top1, top3)
+blog22.save()
+
+blog33 = Blogpost.objects.create(author = artem, title = 'title33', content= 'bbbbbbb' )
+blog33.topic.add(top1)
+blog33.save()
+
+blog44 = Blogpost.objects.create(author = artem2, title = 'title44', content= 'ccc cccc' )
+blog44.topic.add(top4)
+blog44.save()
+
+
+
+comment22 = Comment.objects.create(author = artem2, blogpost = blog22, content= 'ccc cccc' )
+comment23 = Comment.objects.create(author = artem2, blogpost = blog22, content= 'xxxx xxx' )
+comment23 = Comment.objects.create(author = artem, blogpost = blog22, content= 'cccc cccc' )
+comment23 = Comment.objects.create(author = artem, blogpost = blog22, content= 'qqqq qqq' )
+comment23 = Comment.objects.create(author = artem, blogpost = blog22, content= 'sssdasd' )
+comment23 = Comment.objects.create(author = artem, blogpost = blog33, content= 'sssdasd' )
+comment23 = Comment.objects.create(author = artem, blogpost = blog33, content= 'sdddfs' )
+comment23 = Comment.objects.create(author = artem, blogpost = blog33, content= 'vcvb' )
+comment23 = Comment.objects.create(author = vasja, blogpost = blog33, content= 'vcvb' )

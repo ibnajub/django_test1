@@ -5,7 +5,7 @@ import string
 # mysite/myapp/views.py
 from django.http import HttpResponse
 
-from myapp.forms import PostForm, BlogpostForm
+from myapp.forms import PostForm, BlogpostForm, PostFormModel, TopicFormModel
 from myapp.models import Blogpost, Topic
 
 
@@ -21,8 +21,8 @@ def blog(request, slug):
         pass
     else:
         blog = get_object_or_404(Blogpost.objects.filter(slug=slug))
-        form = BlogpostForm()
-    
+        form = PostFormModel(instance=blog, disabled_fields=True)
+    # disabled_fields=('title',)
     return render(request, 'blog.html', {
         'form': form,
         'slug': slug,
@@ -41,7 +41,8 @@ def topic(request, topic_id):
         pass
     else:
         topic = get_object_or_404(Topic.objects.filter(id=topic_id))
-        form = PostForm()
+        form = TopicFormModel(instance=topic, disabled_fields=True)
+        # form = PostForm()
     
     return render(request, 'topic.html', {
         'form': form,

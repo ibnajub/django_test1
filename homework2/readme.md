@@ -13,8 +13,16 @@ https://habr.com/ru/companies/productivity_inside/articles/505430/
 МэжикМетоды
 СинглТон
 ЧериПик
-Каталог паттернов проектирования
-https://refactoring.guru/ru/design-patterns/catalog
+Каталог паттернов проектирования https://refactoring.guru/ru/design-patterns/catalog
+
+34 урок
+Нормализация БД
+Декоратор классом 34 методы инит , колл
+Полиморфизм
+
+пример сайта для уроков
+https://edu-python-course.github.io/blog-bootstrap/templates/blogpost.html
+https://edu-python-course.github.io/_build/html/uk/appx/blog.html#challenge-templates
 
 Урок 1
 https://github.com/PonomaryovVladyslav/PythonCources/blob/master/lesson28.md
@@ -49,4 +57,20 @@ How to manage static files (e.g. images, JavaScript, CSS)¶
 https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 Урок 3 ОРМ
+Создать два пользователя через createsuperuser
+При помощи shell создать две категории постов, 5 постов в разных категориях (2 и 3, например), создать 5-7 комментариев
+к постам, хотя бы один пост оставить без коментариев
+Реализовать такие страницы как: '/', /<slug:slug>/
+На главной странице, должен отображаться список всех блогов, название каждого должно быть ссылкой на страницу с
+подробностями о блоге
+На странице с подробностями, должны отображаться детали поста, и все комментарии написанные к этому посту
+Дополнительная информация:
+Если сложно разобраться со слагами, то реализуйте сначала урл который будет принимать id вместо слага, а только потом
+добавте еще один уже для слага
+Генерацию слага удобнее всего разместить в методе save.
+
+Урок 4 Формы и юзер
+
+Урок 5
+классы https://ccbv.co.uk/
 

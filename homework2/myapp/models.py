@@ -8,7 +8,7 @@ from django.utils.text import slugify
 
 
 class Topic(models.Model):
-    author = models.ManyToManyField(User, related_name='author')
+    author = models.ManyToManyField(User, related_name='authors')
     
     title = models.CharField(max_length=200, blank=False, null=True)
     description = models.TextField(max_length=10000, null=True)
@@ -18,8 +18,8 @@ class Topic(models.Model):
 
 
 class Blogpost(models.Model):
-    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, related_name='blog_author')
-    topic = models.ManyToManyField(Topic, related_name='topic')
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, null=True, related_name='blog_authors')
+    topic = models.ManyToManyField(Topic, related_name='topics')
     
     slug = models.SlugField(max_length=50, null=True, unique=True, db_index=True)
     title = models.CharField(max_length=200, blank=False, null=True)
@@ -30,15 +30,15 @@ class Blogpost(models.Model):
     
     def save(self, **kwargs):
         self.slug = slugify(self.title)
-        super.save(**kwargs)
+        super().save(**kwargs)
     
     def __str__(self):
         return "Author: {}; Title: {}; Slug: {}".format(self.author.username, self.title, self.slug)
 
 
 class Comment(models.Model):
-    blogpost = models.ForeignKey(Blogpost, on_delete=models.CASCADE, null=False, related_name='blog')
-    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='comment_author')
+    blogpost = models.ForeignKey(Blogpost, on_delete=models.CASCADE, null=False, related_name='blogs')
+    author = models.ForeignKey(User, on_delete=models.DO_NOTHING, related_name='comment_authors')
     
     created_at = models.DateTimeField(auto_now_add=True)
     content = models.TextField(max_length=10000, null=True)
