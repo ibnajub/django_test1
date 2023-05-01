@@ -8,6 +8,7 @@ django_manage_shell
 
 from myapp.models import *
 
+
 from django.db import connection
 connection.queries
 последний запрос
