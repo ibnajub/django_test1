@@ -7,7 +7,46 @@
         {{ form.as_p }}
         <p><br></p>
 
-        <button type="submit">Save blog</button>
+        <button type="submit">Edit blog</button>
+
+        <p><br></p>
+
+        <div class="flex-container" style="display: flex; flex-direction: column;background-color: antiquewhite">
+            COMMENTS:
+
+            <ul>
+                {{ formset.management_form }}
+                {% for form in formset %}
+
+                    <li>{{ form.author }} {{ form.created_at }}
+                        <div>
+                            {{ form.content }}
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {#---------------#}
+            {#        {{ formset }}#}
+            {#        -----------------#}
+            {#            {{ formset.management_form }}#}
+            {#            {% for form in formset %}#}
+            {#                {{ form }}#}
+            {#            {% endfor %}#}
+            {#        ------------------------#}
+            {#            {{ formset.management_form }}#}
+            {#            {% for form in formset %}#}
+            {#                {% for field in form %}#}
+            {#                    <div>#}
+            {#                        {{ field.label_tag }} {{ field }}#}
+            {#                    </div>#}
+            {#                {% endfor %}#}
+            {#            {% endfor %}#}
+            {##}
+            {#        -------------------#}
+            {#        {% endfor %}#}
+        </div>
+
     </form>
 
 {% endblock %}

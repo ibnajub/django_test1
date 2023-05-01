@@ -5,8 +5,9 @@ import string
 # mysite/myapp/views.py
 from django.http import HttpResponse
 
-from myapp.forms import PostForm, BlogpostForm, PostFormModel, TopicFormModel
-from myapp.models import Blogpost, Topic
+from myapp.forms import PostForm, BlogpostForm, PostFormModel, TopicFormModel, CommentsFormset
+from myapp.models import Blogpost, Topic, Comment
+from django.forms import modelformset_factory
 
 
 def blogs(request):
@@ -22,10 +23,15 @@ def blog(request, slug):
     else:
         blog = get_object_or_404(Blogpost.objects.filter(slug=slug))
         form = PostFormModel(instance=blog, disabled_fields=True)
-    # disabled_fields=('title',)
+        comments_queryset = Comment.objects.filter(blogpost=blog)
+        CommentsFormsetClass = modelformset_factory(Comment, fields=['author', 'content', 'created_at'])
+        comments_formset = CommentsFormsetClass(queryset=comments_queryset)
+    
     return render(request, 'blog.html', {
         'form': form,
         'slug': slug,
+        'formset': comments_formset
+        
     })
 
 

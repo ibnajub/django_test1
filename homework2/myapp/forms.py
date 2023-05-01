@@ -19,8 +19,8 @@ class BlogpostForm(forms.Form):
     slug = forms.CharField(label='slug', max_length=100)
     title = forms.CharField(label='Title', max_length=100)
     content = forms.Textarea()
-    created_at = forms.CharField(label='created_at')
-    updated_at = forms.CharField(label='updated_at')
+    # created_at = forms.CharField(label='created_at')
+    # updated_at = forms.CharField(label='updated_at')
 
 
 class PostFormModel(forms.ModelForm):
@@ -70,7 +70,7 @@ class TopicFormModel(forms.ModelForm):
 class CommentFormModel(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ['blogpost', 'author', 'content', ]
+        fields = ['author', 'content', ]
     
     def __init__(self, *args, **kwargs):
         disabled_fields = kwargs.get('disabled_fields')
@@ -80,3 +80,9 @@ class CommentFormModel(forms.ModelForm):
         if disabled_fields:
             for field in self.fields:
                 self.fields[field].disabled = True
+
+
+class CommentsFormset(forms.BaseFormSet):
+    class Meta:
+        model = Comment
+        fields = ['author', 'content', ]
